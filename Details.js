@@ -33,8 +33,10 @@ class Details extends Component {
           <Text>{data.SUBBACIA}</Text>
         </Text>
 
-        <Text style={styles.txtDetails}>Responsavel: {data.RESPONSAVEL}</Text>
-
+        <Text style={styles.txtDetails}>
+          <Text style={styles.txtColum}>Responsavel: </Text>
+          <Text>{data.RESPONSAVEL}</Text>
+        </Text>
         <Text style={styles.txtDetails}>Operadora: {data.OPERADORA}</Text>
 
         <Text style={styles.txtDetails}>ESTAÇĂO PLUVIOMÉTRICA: {data.EP}</Text>
