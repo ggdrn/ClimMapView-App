@@ -37,18 +37,38 @@ class Details extends Component {
           <Text style={styles.txtColum}>Responsavel: </Text>
           <Text>{data.RESPONSAVEL}</Text>
         </Text>
-        <Text style={styles.txtDetails}>Operadora: {data.OPERADORA}</Text>
 
-        <Text style={styles.txtDetails}>ESTAÇĂO PLUVIOMÉTRICA: {data.EP}</Text>
+        <Text style={styles.txtDetails}>
+          <Text style={styles.txtColum}>Operadora: </Text>
+          <Text>{data.OPERADORA}</Text>
+        </Text>
 
-        <Text style={styles.txtDetails}>REGISTRADOR DE CHUVA: {data.RC}</Text>
+        <Text style={styles.txtDetails}>
+          <Text style={styles.txtColum}>ESTAÇĂO PLUVIOMÉTRICA: </Text>
+          <Text>{data.EP}</Text>
+        </Text>
 
-        <Text style={styles.txtDetails}>ESTAÇĂO CLIMATOLÓGICA: {data.EC}</Text>
+        <Text style={styles.txtDetails}>
+          <Text style={styles.txtColum}>REGISTRADOR DE CHUVA: </Text>
+          <Text>{data.RC}</Text>
+        </Text>
 
-        <Text style={styles.txtDetails}>Altitude: {data.ALTITUDE}</Text>
+        <Text style={styles.txtDetails}>
+          <Text style={styles.txtColum}>ESTAÇĂO CLIMATOLÓGICA: </Text>
+          <Text>{data.EC}</Text>
+        </Text>
 
-        <Text style={styles.txtDetails}>Lagitude: {data.coordinates.latitude}</Text>
-        <Text style={styles.txtDetails}>Longitude: {data.coordinates.longitude}</Text>
+        <Text style={styles.txtDetails}>
+          <Text style={styles.txtColum}>Altitude: </Text>
+          <Text>{data.ALTITUDE}</Text>
+        </Text>
+
+        <Text style={styles.txtDetails}>
+          <Text style={styles.txtColum}>Lagitude: </Text>
+          <Text>{data.coordinates.latitude}</Text>
+          <Text style={styles.txtColum}>Longitude: </Text>
+          <Text>{data.coordinates.longitude}</Text>
+        </Text>
 
       </ScrollView>
     )
