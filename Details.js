@@ -1,7 +1,41 @@
 import React, { Component } from 'react';
-import { ScrollView, Text, Button, StyleSheet } from 'react-native';
+import { ScrollView, Text, Button, StyleSheet,Share } from 'react-native';
 
 class Details extends Component {
+  onShare = async () => {
+    try {
+      const data = this.props.navigation.getParam('data', 'NO-data');
+      const result = await Share.share({
+        message: 'Titulo: '+data.title+'\n'+
+                  'ID: '+data.ID+'\n'+
+                  'ESTADO: '+data.ESTADO+'\n'+
+                  'MUNICÍPIO: '+data.MUNICIPIO+'\n'+
+                  'BACIA: '+data.BACIA+'\n'+
+                  'SUB-BACIA: '+data.SUBBACIA+'\n'+
+                  'RESPONSÁVEL: '+data.RESPONSAVEL+'\n'+
+                  'OPERADORA: '+data.OPERADORA+'\n'+
+                  'ALTITUDE: '+data.ALTITUDE+'\n'+
+                  'ESTAÇĂO PLUVIOMÉTRICA: '+data.EP+'\n'+
+                  'REGISTRADOR DE CHUVA: '+data.EC+'\n'+
+                  'ESTAÇĂO CLIMATOLÓGICA: '+data.EC+'\n'+
+                  'latitude: '+data.coordinates.latitude+'\n'+
+                  'longitude: '+data.coordinates.longitude+'\n'+
+                  'Fonte: ClimMapView',
+      });
+
+      if (result.action === Share.sharedAction) {
+        if (result.activityType) {
+          // shared with activity type of result.activityType
+        } else {
+          // shared
+        }
+      } else if (result.action === Share.dismissedAction) {
+        // dismissed
+      }
+    } catch (error) {
+      alert(error.message);
+    }
+  };
   render(){
      const data = this.props.navigation.getParam('data', 'NO-data');
     return (
@@ -66,9 +100,14 @@ class Details extends Component {
         <Text style={styles.txtDetails}>
           <Text style={styles.txtColum}>Lagitude: </Text>
           <Text>{data.coordinates.latitude}</Text>
+        </Text>
+
+        <Text style={styles.txtDetails}>
           <Text style={styles.txtColum}>Longitude: </Text>
           <Text>{data.coordinates.longitude}</Text>
         </Text>
+
+        <Button  onPress={this.onShare} title="Share" />
 
       </ScrollView>
     )
