@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { ScrollView, Text, Button, StyleSheet,Share } from 'react-native';
+import { ScrollView, Text, TouchableOpacity, StyleSheet,Share } from 'react-native';
 
 class Details extends Component {
   onShare = async () => {
@@ -107,7 +107,9 @@ class Details extends Component {
           <Text>{data.coordinates.longitude}</Text>
         </Text>
 
-        <Button  onPress={this.onShare} title="Share" />
+        <TouchableOpacity style={styles.button} onPress={this.onShare}>
+          <Text style={styles.txtButton}> Compartilhar </Text>
+        </TouchableOpacity>
 
       </ScrollView>
     )
@@ -150,7 +152,15 @@ const styles = StyleSheet.create({
     borderBottomWidth: 0.5,
     borderBottomColor: 'grey'
 	},
-
-
+  button: {
+    alignItems: 'center',
+    backgroundColor: '#426AD1',
+    marginTop: 15,
+    marginBottom: 15,
+    padding: 10
+  },
+  txtButton: {
+    color: 'white'
+  },
 });
 export default Details;
