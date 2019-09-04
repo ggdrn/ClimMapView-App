@@ -1,11 +1,12 @@
 import React, { Component } from 'react';
-import {View, StyleSheet, Text, PermissionsAndroid, Alert,Platform} from 'react-native';
+import {View, StyleSheet, Text, PermissionsAndroid, Alert,Platform, Image, TouchableOpacity, Button} from 'react-native';
 import MapView, {Marker} from 'react-native-maps';
 import { createStackNavigator, createAppContainer } from "react-navigation";
 import Details from './Details';
 import BarChartExample from './Plot';
 
 import * as dados from './data/dados.json';
+const markerImg = require('./icon/nuvem-azul-small.png');
 
 // console.log(dados.properties);
   var json = {
@@ -48,21 +49,19 @@ import * as dados from './data/dados.json';
            }
         }
 
-class Mapa extends Component{
-    constructor(props) {
-      super(props);
-      this.data = json;
-      console.log(this.data);
-    }
+class Map extends Component{
+  constructor(props) {
+    super(props);
+    this.data = json;
+    console.log(this.data);
+  }
 
-state = {
-    currentLongitude:  -43.279,//Initial Longitude
-    currentLatitude: -22.839,//Initial Latitude
- }
-
-  render() {
+  state = {
+      currentLongitude:  -43.279,//Initial Longitude
+      currentLatitude: -22.839,//Initial Latitude
+   }
+   render() {
     return (
-
       <View style={styles.container}>
         <MapView
           style={styles.map}
@@ -77,10 +76,15 @@ state = {
 
         {this.data.markers.map(marker => (
           <MapView.Marker
-            coordinate={marker.coordinates}
-            title={marker.title}
-            onPress={() => this.props.navigation.navigate('Details',{data: marker})}
-            >
+            image={markerImg}
+            coordinate={marker.coordinates}>
+            <MapView.Callout onPress={() => this.props.navigation.navigate('Details',{data: marker})}>
+              <TouchableOpacity
+              style={styles.popup}
+              >
+              <Text style={styles.txtTitle}>{marker.title}</Text>
+                </TouchableOpacity>
+            </MapView.Callout>
           </MapView.Marker>
           ))}
 
@@ -93,7 +97,7 @@ state = {
 
 const AppNavigator = createStackNavigator({
   Home: {
-    screen: Mapa
+    screen: Map
   },
   Details:{
     screen: Details
@@ -125,6 +129,21 @@ const styles = StyleSheet.create({
     flex: 1,
     justifyContent: 'flex-end',
     alignItems: 'flex-end',
+
+  },
+
+  txtTitle:{
+
+    fontSize: 16,
+    fontWeight: 'bold'
+
+  },
+
+  popup:{
+
+    alignItems: 'center',
+    backgroundColor: '#FFFFFF',
+    padding: 2
 
   },
 
