@@ -111,6 +111,12 @@ class Details extends Component {
           <Text style={styles.txtButton}> Compartilhar </Text>
         </TouchableOpacity>
 
+        <TouchableOpacity style={styles.button} onPress={() => this.props.navigation.navigate('Plot')}>
+          <Text style={styles.txtButton}> Grafico </Text>
+        </TouchableOpacity>
+
+
+
       </ScrollView>
     )
   }

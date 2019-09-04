@@ -3,6 +3,7 @@ import {View, StyleSheet, Text, PermissionsAndroid, Alert,Platform} from 'react-
 import MapView, {Marker} from 'react-native-maps';
 import { createStackNavigator, createAppContainer } from "react-navigation";
 import Details from './Details';
+import BarChartExample from './Plot';
 
 import * as dados from './data/dados.json';
 
@@ -96,6 +97,9 @@ const AppNavigator = createStackNavigator({
   },
   Details:{
     screen: Details
+  },
+  Plot:{
+    screen: BarChartExample
   }
 },
 {
