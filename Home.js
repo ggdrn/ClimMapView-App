@@ -57,5 +57,8 @@ const styles = StyleSheet.create({
     marginBottom: 15,
     padding: 10
   },
+  txtButton: {
+    color: 'white'
+  },
 
 });
