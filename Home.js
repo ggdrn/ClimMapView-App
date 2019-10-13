@@ -1,11 +1,15 @@
 import React, { Component } from 'react';
 import { ScrollView, Text, TouchableOpacity, StyleSheet,Share } from 'react-native';
 import { createStackNavigator, createAppContainer } from "react-navigation";
+import axios from 'axios';
 
 import Details from './Details';
 import BarChartExample from './Plot';
 import Map from './Map';
 
+axios.get('http://localhost:8000/api/getEstacoes')
+  .then(response => {console.log(response); })
+  .catch(() => {console.log("erro ao conseguir os dados") });
 
 class Home extends Component {
   render(){
