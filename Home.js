@@ -7,9 +7,9 @@ import Details from './Details';
 import BarChartExample from './Plot';
 import Map from './Map';
 
-axios.get('http://localhost:8000/api/getEstacoes')
-  .then(response => {console.log(response); })
-  .catch(() => {console.log("erro ao conseguir os dados") });
+  axios.get('http://localhost:8000/api/getEstacoes')
+  .then(response => {console.log(response)})
+  .catch(error => {console.log(error) });
 
 class Home extends Component {
   render(){
