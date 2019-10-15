@@ -7,11 +7,36 @@ import Details from './Details';
 import BarChartExample from './Plot';
 import Map from './Map';
 
-  axios.get('http://localhost:8000/api/getEstacoes')
-  .then(response => {console.log(response)})
+axios.get('http://192.168.43.85:8000/api/getEstacoes')
+  .then(response => {console.log(response.data[0])})
   .catch(error => {console.log(error) });
 
-class Home extends Component {
+//   const URI = 'http://localhost:8000';
+//   async function FetchEstacao() {
+//       try {
+//               let response = await fetch(URI + '/api/getEstacoes');
+//               let responseJsonData = await response.json();
+//               return responseJsonData;
+//           }
+//       catch(e) {
+//           return e;
+//       }
+//   }
+//   const ajax = FetchEstacao();
+//   console.log(ajax);
+// //
+// class Home extends Component {
+//   state = {
+//     coins: []
+//   }
+//
+//   async componentDidMount() {
+//     const coins = await ajax.fetchCoins();
+//     this.setState({coins});
+//     console.log(this.state.coins);
+//   }
+  class Home extends Component {
+
   render(){
    return (
      <ScrollView>
